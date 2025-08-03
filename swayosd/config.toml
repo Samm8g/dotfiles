@@ -1,0 +1,8 @@
+[server]
+style = "~/.config/hypr/swayosd/style.css"
+
+top_margin = 1
+max_volume = 150
+show_percentage = true
+
+[client]

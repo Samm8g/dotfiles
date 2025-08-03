@@ -1,0 +1,39 @@
+@import "../../../.cache/wal/colors.css";
+
+window#osd {
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: 5px;
+  background: alpha(var(--color2), 0.8);
+}
+window#osd #container {
+  margin: 16px;
+}
+window#osd image,
+window#osd label {
+  color: var(--foreground);
+}
+window#osd progressbar:disabled,
+window#osd image:disabled {
+  opacity: 0.5;
+}
+window#osd progressbar {
+  min-height: 6px;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+}
+window#osd trough {
+  min-height: inherit;
+  border-radius: inherit;
+  border: none;
+  background: alpha(var(--foreground), 0.5);
+  min-width: 150px;
+}
+window#osd progress {
+  min-height: inherit;
+  border-radius: inherit;
+  border: none;
+  background: var(--foreground);
+  min-width: 2px;
+}

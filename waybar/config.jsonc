@@ -1,0 +1,162 @@
+{
+    "reload_style_on_change": true,
+    // "layer": "top",
+    // "position": "bottom",
+    "height": 36,
+    // "width": 1280
+    "spacing": 2,
+    // Choose the order of the modules
+    "modules-left": [
+        "idle_inhibitor",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+
+    ],
+    "modules-right": [
+        "cpu",
+        "temperature",
+        "memory",
+        "custom/amdgpu",
+        "custom/amdgpu_temp",
+        "network",
+        "pulseaudio",
+        "backlight",
+        "power-profiles-daemon",
+        "battery",
+        "tray",
+        "clock",
+        "custom/power"
+    ],
+
+    "idle_inhibitor": {
+        "tooltip-format-activated": "Sleeping Blocked",
+        "tooltip-format-deactivated": "Auto Sleeping",
+        "format": "{icon}",
+        "format-icons": {
+        "activated": "",
+        "deactivated": ""
+        }
+    },
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "on-click": "activate",
+        "on-right-click": "close",
+        "format": "{name}"
+    },
+    "hyprland/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:L%Y-%m-%d<small>[%a]</small> <tt><small>%p</small></tt>%I:%M}"
+    },
+    "cpu": {
+        "format": " {usage}%"
+    },
+    "memory": {
+        "format": " {}%"
+    },
+    "temperature": {
+        "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        //"critical-threshold": 40,
+        //"format-critical": "{icon} {temperatureC}°C",
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": [
+            ""
+        ]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "󰃟"
+        ]
+    },
+    "battery": {
+        "states": {
+            "good": 100,
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+    "network": {
+        //"format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "󰈀 {ifname}",
+        "tooltip-format": "󰈀 {ifname} via {gwaddr}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "Disconnected ⚠ {ifname}",
+        "format-alt": " {ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": " {icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "󰝟  {icon} {format_source}",
+        "format-muted": "󰝟  {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            //            "headphone": "󰋋",
+            //            "hands-free": "",
+            //            "headset": "󰋎",
+            //            "phone": "",
+            //            "portable": "",
+            //            "car": "",
+            "default": [
+                "",
+                "",
+                "",
+            ]
+        },
+        "on-click": "pwvucontrol",
+        "on-click-right": ""
+    },
+    "custom/power": {
+        "format": "󰐥",
+        "tooltip": false,
+        "on-click": "wlogout --layout ~/.config/hypr/wlogout/layout --css ~/.config/hypr/wlogout/style.css" // Replace with the command to execute
+    },
+    "custom/amdgpu": {
+        "exec": "cat /sys/class/hwmon/hwmon0/device/gpu_busy_percent",
+        "format": "󰍹 {}%",
+        "return-type": "",
+        "interval": 1
+    },
+    "custom/amdgpu_temp": {
+        "exec": "cat /sys/class/hwmon/hwmon0/temp1_input | awk '{print $1/1000}'",
+        "format": " {}°C",
+        "return-type": "",
+        "interval": 1
+    }
+}
